@@ -44,6 +44,53 @@ go build -o fengo cmd/fengo/main.go
 
 You can download pre-built binaries for Windows, macOS, and Linux from the [Releases](https://github.com/blip-lang/fengo/releases) page.
 
+## Library Usage
+
+You can also use `fengo` as a library in your own Go projects.
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/blip-lang/fengo/pkg/font"
+	"github.com/blip-lang/fengo/pkg/render"
+)
+
+func main() {
+	// Load font from a file
+	f, _ := font.Load("path/to/font.json")
+
+	// Render with options
+	output := render.Render("Hello", f, &render.Options{
+		Color: "cyan",
+	})
+
+	fmt.Println(output)
+}
+```
+
+## Try these commands!
+
+After building the binary (`go build -o fengo cmd/fengo/main.go`), try these out:
+
+```bash
+# Classic Slant
+./fengo --font slant --color blue "FENGO"
+
+# Bold Block
+./fengo --font block --color red "DANGER"
+
+# Minimalist Dots
+./fengo --font dots --color purple "STYLISH"
+
+# Small but clear
+./fengo --font mini --color green "SUCCESS"
+
+# Multi-line input (using \n)
+./fengo --font slant "LINE ONE\nLINE TWO"
+```
+
 ## Usage
 
 ```bash
