@@ -26,6 +26,10 @@ go build -o fengo cmd/fengo/main.go
 - `--font`: Name of a font in `assets/fonts/` (without .json) or a path to a custom JSON font file. Default: `mini`.
 - `--color`: Color to apply to the output.
 
+### Available Fonts
+
+`mini` (default), `block`, `dots`, `slant`.
+
 ### Available Colors
 
 `red`, `green`, `yellow`, `blue`, `purple`, `magenta`, `pink`, `cyan`, `white`.
@@ -33,8 +37,9 @@ go build -o fengo cmd/fengo/main.go
 ### Examples
 
 ```bash
+./fengo --font slant --color cyan "Fengo"
 ./fengo --font block --color green "Hello World"
-./fengo --font dots --color pink "Fengo"
+./fengo --font dots --color pink "Dots"
 ```
 
 ## Creating Custom Fonts
