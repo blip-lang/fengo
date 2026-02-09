@@ -6,40 +6,61 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/license/blip-lang/fengo" alt="License">
-  <img src="https://img.shields.io/github/v/release/blip-lang/fengo" alt="Release">
+  <img src="https://img.shields.io/github/v/release/blip-lang/fengo" alt="Release Status">
   <img src="https://img.shields.io/github/go-mod/go-version/blip-lang/fengo" alt="Go Version">
-  <img src="https://img.shields.io/github/actions/workflow/status/blip-lang/fengo/go.yml" alt="Build Status">
+  <img src="https://github.com/blip-lang/fengo/actions/workflows/release.yml/badge.svg" alt="Release Workflow Status">
 </p>
 
-`fengo` is a lightweight, customizable ASCII art font rendering engine written in Go. It is designed to be simple, secure, and easily extensible with your own JSON-based font formats. It's built with focus on customizability and simplicity.
+`fengo` is a lightweight, customizable ASCII art font rendering engine written in Go. It is designed to be simple, secure, and easily extensible with your own JSON-based font formats.
 
 ## Features
 
 - **Custom JSON Fonts**: Define your own fonts in a simple JSON format.
-- **Color Support**: Built-in support for standard ANSI colors.
-- **Case Insensitivity**: Automatically falls back to uppercase if lowercase characters are missing.
-- **Zero Dependencies**: Uses only the Go standard library.
+- **Improved Resolution**: High-quality 5-line height fonts for better readability.
+- **Color Support**: Built-in support for standard ANSI colors including `pink`, `cyan`, and `magenta`.
+- **Case Insensitivity**: Automatically falls back to uppercase if lowercase characters are missing in the font file.
+- **Multi-line Support**: Renders multi-line strings correctly.
+- **Zero Dependencies**: Uses only the Go standard library for core logic.
 
 ## Installation
 
+### From Source
+
+Ensure you have [Go](https://go.dev/dl/) installed:
+
 ```bash
+go install github.com/blip-lang/fengo/cmd/fengo@latest
+```
+
+Or clone and build manually:
+
+```bash
+git clone https://github.com/blip-lang/fengo.git
+cd fengo
 go build -o fengo cmd/fengo/main.go
 ```
+
+### Pre-built Binaries
+
+You can download pre-built binaries for Windows, macOS, and Linux from the [Releases](https://github.com/blip-lang/fengo/releases) page.
 
 ## Usage
 
 ```bash
-./fengo [flags] <text>
+fengo [flags] <text>
 ```
 
 ### Flags
 
-- `--font`: Name of a font in `assets/fonts/` (without .json) or a path to a custom JSON font file. Default: `mini`.
+- `--font`: Name of a font in `assets/fonts/` (e.g., `mini`, `block`, `dots`, `slant`) or a direct path to a custom `.json` font file. Default: `mini`.
 - `--color`: Color to apply to the output.
 
 ### Available Fonts
 
-`mini` (default), `block`, `dots`, `slant`.
+- `mini` (default): Clean, sans-serif style.
+- `block`: Bold, dense characters using `@`.
+- `dots`: Refined style using dots.
+- `slant`: Stylish slanted ASCII art.
 
 ### Available Colors
 
@@ -48,25 +69,46 @@ go build -o fengo cmd/fengo/main.go
 ### Examples
 
 ```bash
-./fengo --font slant --color cyan "Fengo"
-./fengo --font block --color green "Hello World"
-./fengo --font dots --color pink "Dots"
+# Render with default font
+fengo "Hello"
+
+# Render with slant font in cyan
+fengo --font slant --color cyan "Fengo"
+
+# Render with block font in green
+fengo --font block --color green "Success"
 ```
 
 ## Creating Custom Fonts
 
-Fonts are stored as JSON files. Each font requires a `name`, a `height`, and a `characters` map where each key is a single character and the value is a list of strings representing the rows of that character.
+Fonts are simple JSON files. Create a file (e.g., `myfont.json`) with the following structure:
 
-Example:
 ```json
 {
-  "name": "mini",
+  "name": "myfont",
   "height": 5,
   "characters": {
-    "A": ["  A  ", " A A ", "AAAAA", "A   A", "A   A"],
-    " ": ["     ", "     ", "     ", "     ", "     "]
+    "A": [
+      "  A  ",
+      " A A ",
+      "AAAAA",
+      "A   A",
+      "A   A"
+    ],
+    " ": [
+      "     ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ]
   }
 }
+```
+
+Then use it with:
+```bash
+fengo --font ./myfont.json "AAA"
 ```
 
 ## License
