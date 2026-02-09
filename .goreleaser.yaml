@@ -1,0 +1,62 @@
+version: 2
+
+project_name: fengo
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/fengo/main.go
+    binary: fengo
+    ignore:
+      - goos: windows
+        goarch: arm64
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  version_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+nfpms:
+  -
+    id: packages
+    package_name: fengo
+    file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    vendor: Blip Lang
+    maintainer: Blip Lang <maintainer@example.com>
+    description: A lightweight, customizable ASCII art font rendering engine.
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
+
+# Note: Automated AUR packaging typically requires pushing to a separate git repository 
+# with SSH keys (secrets). For simplicity and security in this initial setup, 
+# we are generating the binary packages (deb/rpm) and archives directly.
