@@ -1,0 +1,33 @@
+{
+  "name": "mini",
+  "height": 3,
+  "characters": {
+    " ": ["   ", "   ", "   "],
+    "A": [" A ", "AAA", "A A"],
+    "B": ["BB ", "BBB", "BB "],
+    "C": [" CC", "C  ", " CC"],
+    "D": ["DD ", "D D", "DD "],
+    "E": ["EEE", "EE ", "EEE"],
+    "F": ["FFF", "FF ", "F  "],
+    "G": ["GG ", "G G", "GGG"],
+    "H": ["H H", "HHH", "H H"],
+    "I": [" I ", " I ", " I "],
+    "J": ["  J", "J J", " J "],
+    "K": ["K K", "KK ", "K K"],
+    "L": ["L  ", "L  ", "LLL"],
+    "M": ["M M", "MMM", "M M"],
+    "N": ["N N", "NNN", "N N"],
+    "O": [" O ", "O O", " O "],
+    "P": ["PP ", "PPP", "P  "],
+    "Q": [" Q ", "Q Q", " QQ"],
+    "R": ["RR ", "RR ", "R R"],
+    "S": [" SS", " S ", "SS "],
+    "T": ["TTT", " T ", " T "],
+    "U": ["U U", "U U", "UUU"],
+    "V": ["V V", "V V", " V "],
+    "W": ["W W", "WWW", "W W"],
+    "X": ["X X", " X ", "X X"],
+    "Y": ["Y Y", " Y ", " Y "],
+    "Z": ["ZZZ", " Z ", "ZZZ"]
+  }
+}
