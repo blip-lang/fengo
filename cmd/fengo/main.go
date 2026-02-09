@@ -25,6 +25,7 @@ func main() {
 	}
 
 	text := strings.Join(args, " ")
+	text = strings.ReplaceAll(text, "\\n", "\n")
 	fontPath := resolveFontPath(*fontName)
 
 	f, err := font.Load(fontPath)
