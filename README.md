@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/github/license/blip-lang/fengo" alt="License">
   <img src="https://img.shields.io/github/v/release/blip-lang/fengo" alt="Release Status">
   <img src="https://img.shields.io/github/go-mod/go-version/blip-lang/fengo" alt="Go Version">
-  <img src="https://github.com/blip-lang/fengo/actions/workflows/release.yml/badge.svg" alt="Release Workflow Status">
+  <img src="https://github.com/blip-lang/fengo/actions/workflows/release.yml/badge.svg" alt="Build Status">
 </p>
 
 `fengo` is a lightweight, customizable ASCII art font rendering engine written in Go. It is designed to be simple, secure, and easily extensible with your own JSON-based font formats.
